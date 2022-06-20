@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+  <!-- DNI -->
+
+  <TextView
+      android:id="@+id/TextView1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="DNI:"
+      style="@style/Theme.Pacho"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="20dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/EditText1"
+      android:layout_width="120dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="30dp"
+      style="@style/Theme.Pacho"
+      app:layout_constraintLeft_toLeftOf="@+id/TextView1"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+  <!-- EDAD -->
+
+  <TextView
+      android:id="@+id/TextView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="EDAD:"
+      style="@style/Theme.Pacho"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="10dp"
+      app:layout_constraintLeft_toRightOf="@+id/EditText1"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/EditText2"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="50dp"
+      style="@style/Theme.Pacho"
+      app:layout_constraintLeft_toLeftOf="@+id/TextView2"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+  <!-- APELLIDO PATERNO -->
+
+  <TextView
+      android:id="@+id/TextView3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="APELLIDO PATERNO:"
+      style="@style/Theme.Pacho"
+      android:layout_marginTop="35dp"
+      android:layout_marginLeft="10dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/TextView1" />
+
+  <EditText
+      android:id="@+id/EditText3"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:layout_marginLeft="150dp"
+      style="@style/Theme.Pacho"
+      app:layout_constraintLeft_toRightOf="@+id/TextView3"
+      app:layout_constraintTop_toBottomOf="@+id/EditText1"/>
+
+  <!-- APELLIDO MATERNO -->
+
+  <TextView
+      android:id="@+id/TextView4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="APELLIDO MATERNO:"
+      style="@style/Theme.Pacho"
+      android:layout_marginTop="35dp"
+      android:layout_marginLeft="10dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+
+  <EditText
+      android:id="@+id/EditText4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="150dp"
+      style="@style/Theme.Pacho"
+      app:layout_constraintLeft_toRightOf="@+id/TextView4"
+      app:layout_constraintTop_toBottomOf="@+id/EditText3"/>
+
+
+  <!-- NOMBRES -->
+
+  <TextView
+      android:id="@+id/TextView5"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="NOMBRES:"
+      style="@style/Theme.Pacho"
+      android:layout_marginTop="35dp"
+      android:layout_marginLeft="10dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/TextView4" />
+
+  <EditText
+      android:id="@+id/EditText5"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="150dp"
+      style="@style/Theme.Pacho"
+      app:layout_constraintLeft_toRightOf="@+id/TextView5"
+      app:layout_constraintTop_toBottomOf="@+id/EditText4"/>
+
+
+
+  <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+	      android:layout_width="match_parent"
+	      android:layout_height="wrap_content"
+	      android:id="@+id/sexo"
+	      android:layout_marginTop="50dp"
+	      app:layout_constraintTop_toTopOf="parent"
+	      android:orientation="horizontal">
+    <RadioButton android:id="@+id/masculino"
+		 android:layout_width="wrap_content"
+		 android:layout_height="wrap_content"
+		 android:text="Masculino"/>
+    <RadioButton android:id="@+id/femenino"
+		 android:layout_width="wrap_content"
+		 android:layout_height="wrap_content"
+		 android:text="Femenino"/>
+  </RadioGroup>
+
+  <Spinner
+      android:id="@+id/ciudad"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="150dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:text="Ciudad"/>
+
+  <Button
+      android:id="@+id/b_aceptar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/tb_aceptar"
+      android:layout_marginTop="150dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/ciudad"
+      app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

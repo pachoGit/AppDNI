@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">Pacho</string>
+  <string name="tb_aceptar">Guardar</string>
+
+  <string-array name="ciudades_array">
+    <item>Tarapoto</item>
+    <item>Lima</item>
+    <item>Trujillo</item>
+    <item>Arequipa</item>
+    <item>Moyobamba</item>
+  </string-array>
+</resources>
