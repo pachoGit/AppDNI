@@ -1,12 +1,20 @@
 <resources>
-  <string name="app_name">Pacho</string>
+  <string name="app_name">APP DNI</string>
   <string name="tb_aceptar">Guardar</string>
 
-  <string-array name="ciudades_array">
-    <item>Tarapoto</item>
-    <item>Lima</item>
-    <item>Trujillo</item>
-    <item>Arequipa</item>
-    <item>Moyobamba</item>
+  <string-array name="estado_civil_array">
+    <item>Soltero</item>
+    <item>Casado</item>
+    <item>Viudo</item>
+    <item>Divorciado</item>
   </string-array>
+
+  <string-array name="grado_array">
+    <item>Primaria</item>
+    <item>Secundaria</item>
+    <item>Técnico</item>
+    <item>Superior</item>
+  </string-array>
+
 </resources>
+
