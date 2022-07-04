@@ -67,6 +67,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="23dp"
       android:layout_marginLeft="160dp"
+      android:inputType="textPersonName"
       style="@style/Theme.Pacho"
       app:layout_constraintLeft_toRightOf="@+id/TextView4"
       app:layout_constraintTop_toBottomOf="@+id/TextView1"/>
@@ -90,6 +91,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
       android:layout_marginLeft="160dp"
+      android:inputType="textPersonName"
       style="@style/Theme.Pacho"
       app:layout_constraintLeft_toRightOf="@+id/TextView5"
       app:layout_constraintTop_toBottomOf="@+id/EditText1"/>
@@ -114,6 +116,7 @@
       android:layout_height="wrap_content"
       android:layout_marginTop="13dp"
       android:layout_marginLeft="160dp"
+      android:inputType="textPersonName"
       style="@style/Theme.Pacho"
       app:layout_constraintLeft_toRightOf="@+id/TextView6"
       app:layout_constraintTop_toBottomOf="@+id/EditText2"/>
@@ -152,8 +155,36 @@
   </RadioGroup>
 
 
+  <!-- FECHA NACIMIENTO -->
+
+  <TextView
+      android:id="@+id/TextView13"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="FECHA NACIMIENTO:"
+      style="@style/Theme.Pacho"
+      android:layout_marginTop="35dp"
+      android:layout_marginLeft="15dp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/TextView7" />
+
+  <EditText
+      android:id="@+id/EditText4"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="160dp"
+      android:inputType="date"
+      android:focusable="false"
+      android:clickable="true"
+      android:maxLines="1"
+      style="@style/Theme.Pacho"
+      app:layout_constraintLeft_toRightOf="@+id/TextView13"
+      app:layout_constraintTop_toBottomOf="@+id/RadioGroup1"/>
+
+
   <!-- DEPARTAMENTO -->
-  
+
   <TextView
       android:id="@+id/TextView8"
       android:layout_width="wrap_content"
@@ -163,7 +194,7 @@
       android:layout_marginTop="35dp"
       android:layout_marginLeft="15dp"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/TextView7" />
+      app:layout_constraintTop_toBottomOf="@+id/TextView13" />
 
   <Spinner
       android:id="@+id/Spinner1"
@@ -172,10 +203,9 @@
       android:layout_marginTop="27dp"
       android:layout_marginLeft="160dp"
       app:layout_constraintLeft_toLeftOf="@+id/TextView8"
-      app:layout_constraintTop_toBottomOf="@+id/RadioGroup1"
+      app:layout_constraintTop_toBottomOf="@+id/EditText4"
       android:text="Departamento"/>
-
-
+  
   <!-- PROVINCIA -->
   
   <TextView
