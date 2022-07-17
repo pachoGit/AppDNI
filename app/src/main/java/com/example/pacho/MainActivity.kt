@@ -140,6 +140,32 @@ class MainActivity : AppCompatActivity() {
 
 	boton.setOnClickListener {
 	    
+	    /*
+	    val apellidoPaterno: EditText = findViewById(ids.get(0))
+            val apellidoMaterno: EditText = findViewById(ids.get(1))
+            val nombres: EditText = findViewById(ids.get(2))
+
+            val idsexo: Int = radio.getCheckedRadioButtonId()
+            if (idsexo == -1) {
+		Toast.makeText(this, "Falta completar algunos campos", Toast.LENGTH_SHORT).show()
+            }
+            val sexo: RadioButton = findViewById(idsexo)
+
+
+            val data = mutableMapOf<Any?, Any?>()
+            data.put("ApellidoPaterno",  apellidoPaterno.getText().toString())
+            data.put("ApellidoMaterno",  apellidoMaterno.getText().toString())
+            data.put("Nombres",          nombres.getText().toString())
+            data.put("Sexo",             sexo.getText().toString())
+            data.put("Departamento",     departamentos.getSelectedItem().toString())
+            data.put("Provincia",        provincias.getSelectedItem().toString())
+            data.put("Distrito",         distritos.getSelectedItem().toString())
+            data.put("EstadoCivil",      estadoCivil.getSelectedItem().toString())
+            data.put("NivelInstruccion", grado.getSelectedItem().toString())
+            data.put("FechaNacimiento",  fechaNacimiento.getText().toString())
+	     */
+
+
 	    val url = "http://webapp.inei.gob.pe:8080/sisconcode/ubigeo/buscarDepartamentosPorVersion.htm?llaveProyectoPK=6-1"
 	    val respuesta = JsonArrayRequest(Request.Method.GET, url, null,
 					     Response.Listener {
