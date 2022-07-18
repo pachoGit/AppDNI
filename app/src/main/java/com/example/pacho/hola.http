@@ -1,0 +1,19 @@
+# GET
+
+GET http://app.solucionesahora.com/app_dni/api/dni
+
+# POST 
+POST http://app.solucionesahora.com/app_dni/api/dni
+Content-Type: application/json
+{
+	"ApellidoPaterno"  : "Hernandez",
+	"ApellidoMaterno"  : "Fernandez",
+	"Nombres"          : "Paul",
+	"Sexo"             : "Masculino",
+	"Departamento"     : "01 Amazonas",
+	"Provincia"        : "05 Luya",
+	"Distrito"         : "01 Lamud",
+	"EstadoCivil"      : "Soltero",
+	"NivelInstruccion" : "Primaria",
+	"FechaNacimiento"  : "2000-06-17"
+}

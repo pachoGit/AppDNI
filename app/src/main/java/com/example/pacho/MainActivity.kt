@@ -15,6 +15,8 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.Toast
+import android.widget.RadioButton
+import android.widget.RadioGroup
 
 import java.util.Calendar
 
@@ -35,6 +37,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
+import org.json.JSONObject
 
 import com.example.pacho.SelectorFecha
 
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 	    cuadroTexto.onFocusChangeListener = View.OnFocusChangeListener {
 		_, hasFocus ->
 		    val contenido = cuadroTexto.getText().toString()
-		if (!hasFocus && contenido != "") {
+		if (!hasFocus) {
 		    if (!esTextoCorrecto(contenido)) {
 			cuadroTexto.setError("El contenido no es valido")
 		    }
@@ -73,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 	    SelectorFecha.newInstance { _, anio, mes, dia ->
 					    val ndia = dia.dosDigitos()
 					val nmes = mes.dosDigitos()
-					val fechaSeleccionada = "$ndia/$nmes/$anio"
+					val fechaSeleccionada = "$anio-$nmes-$ndia"
 					fechaNacimiento.setText(fechaSeleccionada)
 	    }.show(fragmentManager, "Selector de Fecha")
 	}
@@ -140,45 +143,54 @@ class MainActivity : AppCompatActivity() {
 
 	boton.setOnClickListener {
 	    
-	    /*
 	    val apellidoPaterno: EditText = findViewById(ids.get(0))
             val apellidoMaterno: EditText = findViewById(ids.get(1))
             val nombres: EditText = findViewById(ids.get(2))
-
+	    
+	    val radio: RadioGroup = findViewById(R.id.RadioGroup1)
             val idsexo: Int = radio.getCheckedRadioButtonId()
-            if (idsexo == -1) {
+
+            if (idsexo == -1 || !esTextoCorrecto(apellidoPaterno.getText().toString()) ||
+		    !esTextoCorrecto(apellidoMaterno.getText().toString()) || !esTextoCorrecto(nombres.getText().toString()) ||
+		fechaNacimiento.getText().toString() == "") {
 		Toast.makeText(this, "Falta completar algunos campos", Toast.LENGTH_SHORT).show()
             }
-            val sexo: RadioButton = findViewById(idsexo)
+	    else {
 
+		val sexo: RadioButton = findViewById(idsexo)
 
-            val data = mutableMapOf<Any?, Any?>()
-            data.put("ApellidoPaterno",  apellidoPaterno.getText().toString())
-            data.put("ApellidoMaterno",  apellidoMaterno.getText().toString())
-            data.put("Nombres",          nombres.getText().toString())
-            data.put("Sexo",             sexo.getText().toString())
-            data.put("Departamento",     departamentos.getSelectedItem().toString())
-            data.put("Provincia",        provincias.getSelectedItem().toString())
-            data.put("Distrito",         distritos.getSelectedItem().toString())
-            data.put("EstadoCivil",      estadoCivil.getSelectedItem().toString())
-            data.put("NivelInstruccion", grado.getSelectedItem().toString())
-            data.put("FechaNacimiento",  fechaNacimiento.getText().toString())
-	     */
+		val data: MutableMap<Any?, Any?> = mutableMapOf<Any?, Any?>()
+		data.put("ApellidoPaterno",  apellidoPaterno.getText().toString())
+		data.put("ApellidoMaterno",  apellidoMaterno.getText().toString())
+		data.put("Nombres",          nombres.getText().toString())
+		data.put("Sexo",             sexo.getText().toString())
+		data.put("Departamento",     departamentos.getSelectedItem().toString())
+		data.put("Provincia",        provincias.getSelectedItem().toString())
+		data.put("Distrito",         distritos.getSelectedItem().toString())
+		data.put("EstadoCivil",      estadoCivil.getSelectedItem().toString())
+		data.put("NivelInstruccion", grado.getSelectedItem().toString())
+		data.put("FechaNacimiento",  fechaNacimiento.getText().toString())
 
-
-	    val url = "http://webapp.inei.gob.pe:8080/sisconcode/ubigeo/buscarDepartamentosPorVersion.htm?llaveProyectoPK=6-1"
-	    val respuesta = JsonArrayRequest(Request.Method.GET, url, null,
-					     Response.Listener {
-						 response ->
-						     Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show()
-					     },
-					     Response.ErrorListener {
-						 error ->
-						     Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
-	    })
-	    colaSolicitud.add(respuesta)
+		val dataJson = JSONObject(data)
+		
+		/*
+		val info: String = "ENVIANDO: " + dataJson.toString()
+		Toast.makeText(this, info, Toast.LENGTH_LONG).show()
+		 */
+		
+		val url = "http://app.solucionesahora.com/app_dni/api/dni"
+		val respuesta = JsonObjectRequest(Request.Method.POST, url, dataJson,
+						  Response.Listener {
+						      response ->
+							  Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show()
+						  },
+						  Response.ErrorListener {
+						      error ->
+							  Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
+		})
+		colaSolicitud.add(respuesta)
+	    }
 	}
-
     }
 
     private fun Int.dosDigitos() =
@@ -197,6 +209,9 @@ class MainActivity : AppCompatActivity() {
      * Verifica si el texto ingresado de los nombres y apellidos son correctos
      */
     private fun esTextoCorrecto(texto: String): Boolean {
+	if (texto == "") {
+	    return false
+	}
 	texto.forEach {
 	    if (!it.isLetter() && !it.isWhitespace()) {
 		return false
@@ -283,7 +298,6 @@ class MainActivity : AppCompatActivity() {
 	cola.add(respuesta)
 	return lista
     }
-
 
 }
 
